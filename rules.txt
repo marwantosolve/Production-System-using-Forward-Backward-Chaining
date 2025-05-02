@@ -1,0 +1,13 @@
+IF shape is long AND color is yellow THEN fruit is banana
+IF shape is round AND color is red AND size is medium THEN fruit is apple
+IF shape is round AND color is red AND size is small THEN fruit is cherry
+IF skin_smell THEN perfumed
+IF fruit is lemon OR fruit is orange OR fruit is pomelo OR fruit is grapefruit THEN citrus_fruit
+IF size is medium AND color is yellow AND perfumed THEN fruit is lemon
+IF size is medium AND color is green THEN fruit is kiwi
+IF size is big AND perfumed AND color is orange AND citrus_fruit THEN fruit is grapefruit
+IF perfumed AND color is orange AND size is medium THEN fruit is orange
+IF perfumed AND color is red AND size is small AND seeds = 0 THEN fruit is strawberry
+IF diameter < 2 THEN size is small
+IF diameter > 10 THEN size is big
+IF diameter > 2 AND diameter < 10 THEN size is medium

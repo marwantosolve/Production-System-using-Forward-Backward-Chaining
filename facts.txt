@@ -1,0 +1,5 @@
+seeds = 0
+diameter = 7
+skin_smell
+color is orange
+#goal citrus_fruit

@@ -1,0 +1,116 @@
+Successfully parsed rules and facts files.
+
+=== Forward Chaining ===
+Initial facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange'}
+
+Cycle 1:
+Rule 4 fired: perfumed
+Rule 13 fired: size is medium
+Current facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange', 'perfumed': True, 'size': 'medium'}
+
+Cycle 2:
+Rule 9 fired: fruit is orange
+Current facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange', 'perfumed': True, 'size': 'medium', 'fruit': 'orange'}
+
+Cycle 3:
+Rule 5 fired: citrus_fruit
+Current facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange', 'perfumed': True, 'size': 'medium', 'fruit': 'orange', 'citrus_fruit': True}
+
+Cycle 4:
+
+No more rules can be applied.
+Final facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange', 'perfumed': True, 'size': 'medium', 'fruit': 'orange', 'citrus_fruit': True}
+Goal 'citrus_fruit' was reached.
+
+=== Backward Chaining ===
+Initial facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange'}
+Goal: citrus_fruit
+
+Cycle 1 (Depth 0):
+Trying to prove: citrus_fruit
+Found 1 rules that could lead to citrus_fruit
+Trying rule 5
+  Evaluating OR condition
+  Attempting to prove OR condition: fruit is lemon OR fruit is orange OR fruit is pomelo OR fruit is grapefruit
+
+Cycle 2 (Depth 1):
+  Trying to prove: fruit is lemon OR fruit is orange OR fruit is pomelo OR fruit is grapefruit
+  Processing OR condition: fruit is lemon OR fruit is orange OR fruit is pomelo OR fruit is grapefruit
+  Trying subgoal of OR: fruit is lemon
+
+Cycle 3 (Depth 2):
+    Trying to prove: fruit is lemon
+    Found 8 rules that could lead to fruit
+    Trying rule 1
+    Rule conclusion doesn't match goal
+    Trying rule 2
+    Rule conclusion doesn't match goal
+    Trying rule 3
+    Rule conclusion doesn't match goal
+    Trying rule 6
+      Need to prove subcondition: size is medium
+
+Cycle 4 (Depth 3):
+      Trying to prove: size is medium
+      Found 3 rules that could lead to size
+      Trying rule 11
+      Rule conclusion doesn't match goal
+      Trying rule 12
+      Rule conclusion doesn't match goal
+      Trying rule 13
+        Condition already satisfied: diameter > 2.0
+        Condition already satisfied: diameter < 10.0
+      All conditions satisfied for rule 13, applying conclusion
+      Current facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange', 'size': 'medium'}
+      Need to prove subcondition: color is yellow
+
+Cycle 4 (Depth 3):
+      Trying to prove: color is yellow
+      No rules found with conclusion: color
+      Failed to satisfy condition: color is yellow
+    Trying rule 7
+    Rule conclusion doesn't match goal
+    Trying rule 8
+    Rule conclusion doesn't match goal
+    Trying rule 9
+    Rule conclusion doesn't match goal
+    Trying rule 10
+    Rule conclusion doesn't match goal
+    Could not prove fruit is lemon using any rules
+  Trying subgoal of OR: fruit is orange
+
+Cycle 3 (Depth 2):
+    Trying to prove: fruit is orange
+    Found 8 rules that could lead to fruit
+    Trying rule 1
+    Rule conclusion doesn't match goal
+    Trying rule 2
+    Rule conclusion doesn't match goal
+    Trying rule 3
+    Rule conclusion doesn't match goal
+    Trying rule 6
+    Rule conclusion doesn't match goal
+    Trying rule 7
+    Rule conclusion doesn't match goal
+    Trying rule 8
+    Rule conclusion doesn't match goal
+    Trying rule 9
+      Need to prove subcondition: perfumed
+
+Cycle 4 (Depth 3):
+      Trying to prove: perfumed
+      Found 1 rules that could lead to perfumed
+      Trying rule 4
+        Condition already satisfied: skin_smell
+      All conditions satisfied for rule 4, applying conclusion
+      Current facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange', 'size': 'medium', 'perfumed': True}
+      Condition already satisfied: color is orange
+      Condition already satisfied: size is medium
+    All conditions satisfied for rule 9, applying conclusion
+    Current facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange', 'size': 'medium', 'perfumed': True, 'fruit': 'orange'}
+  OR condition satisfied with: fruit is orange
+All conditions satisfied for rule 5, applying conclusion
+Current facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange', 'size': 'medium', 'perfumed': True, 'fruit': 'orange', 'citrus_fruit': True}
+
+Goal 'citrus_fruit' was proven!
+Final facts: {'seeds': '0', 'diameter': '7', 'skin_smell': True, 'color': 'orange', 'size': 'medium', 'perfumed': True, 'fruit': 'orange', 'citrus_fruit': True}
